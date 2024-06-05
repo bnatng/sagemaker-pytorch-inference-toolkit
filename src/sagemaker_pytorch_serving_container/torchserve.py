@@ -184,6 +184,8 @@ def _retrieve_ts_server_process():
     ts_server_processes = list()
 
     for process in psutil.process_iter():
+        if process.pid < 20:
+            continue
         if process.status() == psutil.STATUS_ZOMBIE:
             continue
 
